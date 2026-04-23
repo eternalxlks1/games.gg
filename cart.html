@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>games.gg | Gaming Gear Store</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    background: #0b0f1a;
+    color: white;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: #111827;
+    border-bottom: 1px solid #1f2937;
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #6366f1;
+  }
+
+  .cart-btn {
+    background: #4f46e5;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 40px;
+  }
+
+  .card {
+    background: #111827;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #1f2937;
+  }
+
+  .card h3 {
+    color: #a5b4fc;
+    margin-bottom: 10px;
+  }
+
+  .price {
+    margin: 10px 0;
+    color: #22c55e;
+  }
+
+  button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #3730a3;
+  }
+
+  /* CART SIDEBAR */
+  .cart {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background: #0f172a;
+    border-left: 1px solid #1f2937;
+    padding: 20px;
+    transition: 0.3s;
+    overflow-y: auto;
+  }
+
+  .cart.open {
+    right: 0;
+  }
+
+  .cart h2 {
+    margin-bottom: 20px;
+  }
+
+  .cart-item {
+    background: #111827;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  .checkout {
+    margin-top: 20px;
+    background: #22c55e;
+  }
+
+  .remove {
+    background: #ef4444;
+    margin-top: 5px;
+  }
+
+  .total {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+
+  /* OVERLAY */
+  .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+  }
+
+  .overlay.show {
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">games.gg</div>
+  <div class="cart-btn" onclick="toggleCart()">
+    🛒 Cart (<span id="count">0</span>)
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Gaming Gear Store</h1>
+  <p>Build your ultimate setup with pro gaming devices & microphones</p>
+</div>
+
+<section class="grid" id="products">
+
+  <div class="card">
+    <h3>Pro Gaming Mouse</h3>
+    <p class="price">$49.99</p>
+    <button onclick="addToCart('Pro Gaming Mouse', 49.99)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <h3>RGB Mechanical Keyboard</h3>
+    <p class="price">$89.99</p>
+    <button onclick="addToCart('RGB Mechanical Keyboard', 89.99)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <h3>Studio Microphone</h3>
+    <p class="price">$79.99</p>
+    <button onclick="addToCart('Studio Microphone', 79.99)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <h3>Gaming Headset</h3>
+    <p class="price">$59.99</p>
+    <button onclick="addToCart('Gaming Headset', 59.99)">Add to Cart</button>
+  </div>
+
+</section>
+
+<!-- CART -->
+<div class="cart" id="cart">
+  <h2>Your Cart</h2>
+  <div id="cartItems"></div>
+
+  <div class="total">
+    Total: $<span id="total">0</span>
+  </div>
+
+  <button class="checkout" onclick="checkout()">Cash Out</button>
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  saveCart();
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function renderCart() {
+  document.getElementById("count").innerText = cart.length;
+
+  let cartItems = document.getElementById("cartItems");
+  cartItems.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+
+    cartItems.innerHTML += `
+      <div class="cart-item">
+        <strong>${item.name}</strong><br>
+        $${item.price.toFixed(2)}
+        <button class="remove" onclick="removeItem(${index})">Remove</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = total.toFixed(2);
+}
+
+function toggleCart() {
+  document.getElementById("cart").classList.toggle("open");
+  document.getElementById("overlay").classList.toggle("show");
+}
+
+function checkout() {
+  if (cart.length === 0) {
+    alert("Cart is empty!");
+    return;
+  }
+
+  alert("Checkout successful! 🎮 Thanks for shopping at games.gg");
+  cart = [];
+  saveCart();
+  renderCart();
+  toggleCart();
+}
+
+renderCart();
+</script>
+
+</body>
+</html>
