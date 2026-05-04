@@ -1,215 +1,167 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>games.gg | Gaming Gear & Devices</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="games.gg - game updates and dev log">
+  <meta name="author" content="games.gg">
+  <meta name="generator" content="GitHub Pages">
+
+  <title>games.gg</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", Arial, sans-serif;
-    }
-
     body {
-      background: #0b0f1a;
-      color: #ffffff;
-      line-height: 1.6;
+      font-family: system-ui, Arial, sans-serif;
     }
 
-    header {
-      background: linear-gradient(135deg, #111827, #0b0f1a);
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #1f2937;
+    .blog-header-logo {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #4f46e5;
-      letter-spacing: 1px;
-    }
-
-    nav a {
-      color: #cbd5e1;
-      margin-left: 20px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #4f46e5;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: radial-gradient(circle at top, #1e293b, #0b0f1a);
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #94a3b8;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .btn {
-      margin-top: 25px;
-      display: inline-block;
-      padding: 12px 25px;
-      background: #4f46e5;
-      color: white;
+    .game-card {
+      border: 1px solid #ddd;
+      padding: 15px;
       border-radius: 8px;
-      text-decoration: none;
-      transition: 0.3s;
+      height: 100%;
     }
 
-    .btn:hover {
-      background: #3730a3;
-    }
-
-    .section {
-      padding: 80px 50px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section h2 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 32px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #111827;
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid #1f2937;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #4f46e5;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: #a5b4fc;
-    }
-
-    .card p {
-      color: #94a3b8;
+    .muted {
+      color: #6c757d;
       font-size: 14px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      border-top: 1px solid #1f2937;
-      color: #64748b;
-      font-size: 14px;
-    }
-
-    @media(max-width: 600px) {
-      header {
-        flex-direction: column;
-      }
-
-      nav {
-        margin-top: 10px;
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">games.gg</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Devices</a>
-      <a href="#">Microphones</a>
-      <a href="#">Accessories</a>
-      <a href="#">Contact</a>
-    </nav>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="blog-header lh-1 py-3 border-bottom">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+
+      <div class="col-4 pt-1">
+        <a class="link-secondary" href="#">Subscribe</a>
+      </div>
+
+      <div class="col-4 text-center">
+        <a class="blog-header-logo text-dark" href="#">games.gg</a>
+      </div>
+
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        <a class="btn btn-sm btn-outline-secondary" href="#">Repo</a>
+      </div>
+
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Level Up Your Gaming Setup</h1>
-    <p>Discover high-performance gaming devices, studio-grade microphones, and next-gen accessories built for competitive and casual gamers alike.</p>
-    <a href="#" class="btn">Explore Gear</a>
-  </section>
+  <!-- HERO -->
+  <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 fst-italic">games.gg</h1>
+      <p class="lead my-3">
+        a simple collection of browser games, experiments, and dev updates.
+      </p>
+    </div>
+  </div>
 
-  <section class="section">
-    <h2>Featured Categories</h2>
-    <div class="grid">
+  <!-- FEATURE POSTS -->
+  <div class="row mb-2">
 
-      <div class="card">
-        <h3>Gaming Devices</h3>
-        <p>Top-tier controllers, consoles, and performance gear engineered for precision and speed.</p>
+    <div class="col-md-6">
+      <div class="game-card">
+        <strong>update</strong>
+        <h4>Game loader system added</h4>
+        <p class="muted">May 2026</p>
+        <p>basic launcher system now supports multiple games in one page.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="game-card">
+        <strong>notice</strong>
+        <h4>performance issues</h4>
+        <p class="muted">May 2026</p>
+        <p>some games may lag on low-end devices or older browsers.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="row g-5">
+
+    <div class="col-md-8">
+
+      <article class="blog-post">
+        <h2>about games.gg</h2>
+        <p class="muted">repository overview</p>
+
+        <p>
+          games.gg is a lightweight GitHub Pages project built for hosting simple browser games and testing ideas.
+        </p>
+
+        <hr>
+
+        <h3>what this includes</h3>
+        <ul>
+          <li>browser-based games</li>
+          <li>simple UI layouts</li>
+          <li>experimental features</li>
+          <li>dev logs and updates</li>
+        </ul>
+
+      </article>
+
+      <nav class="blog-pagination" aria-label="Pagination">
+        <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
+        <a class="btn btn-outline-secondary rounded-pill disabled">Newer</a>
+      </nav>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="col-md-4">
+
+      <div class="p-4 bg-light rounded mb-3">
+        <h4>about</h4>
+        <p class="mb-0">games.gg dev blog + game repo system.</p>
       </div>
 
-      <div class="card">
-        <h3>Microphones</h3>
-        <p>Crystal-clear audio capture for streaming, esports, and content creation.</p>
+      <div class="p-4">
+        <h4>games</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">neon runner</a></li>
+          <li><a href="#">drift zone</a></li>
+          <li><a href="#">pixel fight</a></li>
+        </ol>
       </div>
 
-      <div class="card">
-        <h3>Headsets</h3>
-        <p>Immersive sound with noise isolation for full in-game awareness.</p>
-      </div>
-
-      <div class="card">
-        <h3>Accessories</h3>
-        <p>Keyboards, mousepads, RGB lighting, and everything to complete your setup.</p>
+      <div class="p-4">
+        <h4>elsewhere</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Discord</a></li>
+        </ol>
       </div>
 
     </div>
-  </section>
 
-  <section class="section">
-    <h2>Why games.gg?</h2>
-    <div class="grid">
+  </div>
 
-      <div class="card">
-        <h3>Pro-Level Quality</h3>
-        <p>We focus on gear used by competitive gamers and streamers worldwide.</p>
-      </div>
+</div>
 
-      <div class="card">
-        <h3>Trusted Reviews</h3>
-        <p>Real feedback from real gamers to help you make the right choice.</p>
-      </div>
+<!-- FOOTER -->
+<footer class="blog-footer text-center mt-4">
+  <p><a href="#">Back to top</a></p>
+</footer>
 
-      <div class="card">
-        <h3>Fast Updates</h3>
-        <p>Stay ahead with the latest tech drops and gaming innovations.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    © 2026 games.gg — Built for gamers, by gamers.
-  </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
